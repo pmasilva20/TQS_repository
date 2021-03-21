@@ -1,0 +1,9 @@
+NºMec:93011
+Nome:Pedro Miguel Alves Silva
+2d)Tendo em conta os resultados obtidos (14 branches missed em 52) podemos verificar que
+a classe com maior numero de branches missed é a classe Dip,sendo o método equals(),o método generateRandomDip()
+e o constructor Dip(int[],int[]) os métodos com missed branches.Na classe CuponEuromillions existe ainda o método
+format() com missed branches.
+Em termos de converage,nota-se os métodos hashCode() e equals em todas as classes,mais o método format na classe
+CuponEuromillion e os métodos getDrawResults() e generateRandomDraw() na classe EuromillionsDraw.
+Tendo em conta que possuimos uma coverage 73% podemos concluir que ainda existem partes do projeto que podiam ser testadas.
