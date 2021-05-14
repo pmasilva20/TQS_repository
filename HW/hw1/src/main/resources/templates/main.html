@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TQS-Homework</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+    p {
+  font-family: verdana;
+  font-size: 20px;
+}
+label{
+  font-size: 25px;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">TQS-Homework</a>
+    <button class="navbar-toggler btn-lg" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+<div class="container-fluid p-10 mx-auto">
+    <div class="row pt-10 d-flex justify-content-around">
+        <div class="col-sm-3 mx-auto" style="text-align: center;">
+            <h4 style="text-align: center;padding-top: 10%;" th:text="'Air Quality in '+${location}"></h4>
+            <h3 th:text="'AQI at date '+${date}"></h3>
+        </div>
+        <form class="col-sm-9 mx-auto" action="/airquality/now" method="get">
+            <div class="row pt-10 d-flex justify-content-around">
+                <div class="col-sm-2">
+                    <label for="city">City</label>
+                    <input type="text" id="city" class="form-control" name="city">
+                </div>
+                <div class="col-sm-2">
+                    <label for="state" >State</label>
+                    <input type="text" id="state" class="form-control" name="state">
+                </div>
+                <div class="col-sm-2">
+                    <label for="country_code" >Country Code</label>
+                    <input type="text" id="country_code" class="form-control" name="country">
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" style="padding: 10%;" class="btn btn-primary">
+                        <p style="font-size: 30px;">Search</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="jumbotron">
+        <p class="text-info">
+            <p th:text="'Overall Quality:' +${aqi}+'/5'"></p>
+            <p th:if="${aqi == 1}" th:text="'Good Air Quality'"></p>
+            <p th:if="${aqi == 2}" th:text="'Fair Air Quality'"></p>
+            <p th:if="${aqi == 3}" th:text="'Moderate Air Quality'"></p>
+            <p th:if="${aqi == 4}" th:text="'Poor Air Quality'"></p>
+            <p th:if="${aqi == 5}" th:text="'Very Poor Air Quality'"></p>
+    </div>
+        <div class="row pt-3">
+            <div class="col-sm-8">
+                <h3>Main Pollutants</h3>
+                <p th:text="'CO -> '+${co}"></p>
+                <p th:text="'NO -> '+${no}"></p>
+                <p th:text="'NO2 -> '+${no2}"></p>
+                <p th:text="'O3 -> '+${o3}"></p>
+                <p th:text="'SO2 -> '+${so2}"></p>
+                <p th:text="'PM25 -> '+${pm2_5}"></p>
+                <p th:text="'PM10 -> '+${pm10}"></p>
+                <p th:text="'NH3 -> '+${nh3}"></p>
+            </div>
+            <div class="col-sm-4">
+                <h3 th:text="'The main pollutant was '+${main_pollutant}+' at '+${main_pollutant_value}"></h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
